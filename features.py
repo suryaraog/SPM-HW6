@@ -89,6 +89,10 @@ class TeamCapacity:
 
     def calculate_team_capacity(self):
         return sum(self.calculate_individual_capacity(member) for member in self.team_members)
+    
+    def display_team_capacity(self):
+        capacity = self.calculate_team_capacity()
+        print(f"\nTotal Team Capacity: {capacity} effort-hours")
 
 # Main program execution
 if __name__ == "__main__":    
@@ -105,5 +109,6 @@ if __name__ == "__main__":
     elif choice == '2':
         team_capacity = TeamCapacity()
         team_capacity.collect_team_members()
+        team_capacity.display_team_capacity()
     else:
         print("Invalid choice.")
