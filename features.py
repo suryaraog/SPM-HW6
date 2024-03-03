@@ -51,13 +51,52 @@ class SprintVelocity:
         velocity = self.calculate_velocity()
         print(f"\nCalculated Sprint Velocity: {velocity} points per sprint")
 
+
+class TeamMember:
+    def __init__(self, days_off, ceremony_hours, hours_per_day, sprint_days):
+        self.days_off = days_off
+        self.ceremony_hours = ceremony_hours
+        self.hours_per_day = hours_per_day
+        self.sprint_days = sprint_days
+
+class TeamCapacity:
+    def __init__(self):
+        self.team_members = []
+
+    def collect_team_members(self):
+        print("\nEnter team member details (type 'done' when finished):")
+        while True:
+            days_off_input = input("Days off (or type 'done' to finish): ")
+            if days_off_input.lower() == 'done':
+                break
+            ceremony_hours = int(input("Ceremony hours: "))
+            hours_per_day_min = int(input("Minimum hours per day: "))
+            hours_per_day_max = int(input("Maximum hours per day: "))
+            sprint_days = int(input("Sprint days: "))
+            
+            member = TeamMember(
+                days_off=int(days_off_input),
+                ceremony_hours=ceremony_hours,
+                hours_per_day=(hours_per_day_min, hours_per_day_max),
+                sprint_days=sprint_days
+            )
+            self.team_members.append(member)
+
+
 # Main program execution
-if __name__ == "__main__":
-    # Create an instance of the SprintVelocity class
-    sprint_velocity = SprintVelocity()
+if __name__ == "__main__":    
+    print("Select feature to test:\n1. Sprint Velocity\n2. Team Capacity")
+    choice = input("Enter choice (1 or 2): ")
 
-    # Collect sprint points from the user
-    sprint_velocity.collect_sprint_points()
-
-    # Display the calculated sprint velocity
-    sprint_velocity.display_velocity()
+    if choice == '1':
+        # Create an instance of the SprintVelocity class
+        sprint_velocity = SprintVelocity()
+        # Collect sprint points from the user
+        sprint_velocity.collect_sprint_points()
+        # Display the calculated sprint velocity
+        sprint_velocity.display_velocity()
+    elif choice == '2':
+        team_capacity = TeamCapacity()
+        team_capacity.collect_team_members()
+    else:
+        print("Invalid choice.")
