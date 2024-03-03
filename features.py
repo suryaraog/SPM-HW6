@@ -87,6 +87,8 @@ class TeamCapacity:
         available_hours = (member.sprint_days - member.days_off) * avg_hours_per_day - member.ceremony_hours
         return available_hours
 
+    def calculate_team_capacity(self):
+        return sum(self.calculate_individual_capacity(member) for member in self.team_members)
 
 # Main program execution
 if __name__ == "__main__":    
