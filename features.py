@@ -19,9 +19,13 @@ class SprintVelocity:
             print("No sprint points entered.")
             return 0
         return sum(self.sprint_points) / len(self.sprint_points)
+    
+    def display_velocity(self):
+        velocity = self.calculate_velocity()
+        print(f"\nCalculated Sprint Velocity: {velocity} points per sprint")
 
-# Assuming the collection method is already called
+# Integration of all steps
 if __name__ == "__main__":
     sprint_velocity = SprintVelocity()
     sprint_velocity.collect_sprint_points()
-    print(f"Average Velocity: {sprint_velocity.calculate_velocity()}")
+    sprint_velocity.display_velocity()
