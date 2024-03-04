@@ -10,3 +10,14 @@
   PTO, Number of days or hours committed to Sprint ceremonies, Number of Hours/Day available
   as a range)
   Output: Available Effort-Hours/Person and Available Effort-Hours for Team
+
+## Usage
+
+To run the program and test the features:
+
+1. Open a terminal in the project directory.
+2. Run the script with Python:
+
+   `python features.py`
+
+   `python -m unittest test_features.py`
